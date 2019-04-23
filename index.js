@@ -22,6 +22,9 @@ let dealerWonAmount = 0;
 const playerCardImage = document.getElementById("playerCardImage");
 const dealerCardImage = document.getElementById("dealerCardImage");
 
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   resetDeck();
   displayRemainingCards();
@@ -49,9 +52,9 @@ const displayCards = () => {
   const { cardNumber: playerCardNumber, suit: playerSuit } = playerCard[0];
   const { cardNumber: dealerCardNumber, suit: dealerSuit } = dealerCard[0];
 
-  const playerCardSuit = playerSuit[0].split("")[0];
-  const dealerCardSuit = dealerSuit[0].split("")[0];
-
+  const playerCardSuit = playerSuit[0].split("")[0].toUpperCase();
+  const dealerCardSuit = dealerSuit[0].split("")[0].toUpperCase();
+  
   const playerImage = playerCardNumber + playerCardSuit;
   const dealerImage = dealerCardNumber + dealerCardSuit;
 
