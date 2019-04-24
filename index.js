@@ -49,8 +49,8 @@ const displayCards = () => {
   const playerCard = deck.splice([Math.floor(Math.random() * deck.length)], 1);
   const dealerCard = deck.splice([Math.floor(Math.random() * deck.length)], 1);
 
-  const { cardNumber: playerCardNumber, suit: playerSuit } = playerCard[0];
-  const { cardNumber: dealerCardNumber, suit: dealerSuit } = dealerCard[0];
+  const { cardNumber: playerCardNumber, suit: playerSuit, image: pCardImage } = playerCard[0];
+  const { cardNumber: dealerCardNumber, suit: dealerSuit, image: dCardImage } = dealerCard[0];
 
   const playerCardSuit = playerSuit[0].split("")[0].toUpperCase();
   const dealerCardSuit = dealerSuit[0].split("")[0].toUpperCase();
@@ -58,8 +58,8 @@ const displayCards = () => {
   const playerImage = playerCardNumber + playerCardSuit;
   const dealerImage = dealerCardNumber + dealerCardSuit;
 
-  playerCardImage.setAttribute("src", `images/cards/${playerImage}.jpg`);
-  dealerCardImage.setAttribute("src", `images/cards/${dealerImage}.jpg`);
+  playerCardImage.setAttribute("src", pCardImage);
+  dealerCardImage.setAttribute("src", dCardImage);
 
   showPlayerCard.innerHTML = `Player has the ${playerCardNumber} of ${playerSuit}`;
   showDealerCard.innerHTML = `Dealer has the ${dealerCardNumber} of ${dealerSuit}`;
@@ -152,9 +152,11 @@ const resetDeck = () => {
 
   cardNumbers.forEach(card => {
     suits.forEach(suit => {
+      const split = suit.split("")[0].toUpperCase();
       deck.push({
         cardNumber: card,
-        suit: suit
+        suit: suit,
+        image: `images/cards/${card+split}.jpg`
       });
     });
   });
@@ -167,3 +169,5 @@ const displayWinningAmounts = () => {
   dealerWonParagraph.textContent = dealerWonAmount;
   playerWonParagraph.textContent = playerWonAmount;
 };
+
+
